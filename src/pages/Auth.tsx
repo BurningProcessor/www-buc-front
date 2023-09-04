@@ -1,5 +1,7 @@
-import { FC } from "react"
+import { FC } from 'react'
 
-export const Auth: FC = () => {
+const Auth: FC = () => {
 	return <div>Auth</div>
 }
+
+export default Auth

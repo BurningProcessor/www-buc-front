@@ -1,16 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+	content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
 	theme: {
 		container: {
-			padding: "2rem",
+			padding: '2rem',
 			center: true,
 		},
 		extend: {
 			fontFamily: {
-				roboto: ["Roboto", "sans-serif"],
+				roboto: ['Roboto', 'sans-serif'],
 			},
 		},
 	},
-	plugins: [require("@tailwindcss/forms")],
+	plugins: [require('@tailwindcss/forms')],
 }
