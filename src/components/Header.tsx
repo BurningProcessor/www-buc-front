@@ -69,7 +69,7 @@ const Header: FC = () => {
 			</button>
 		) : (
 			<Link
-				className="py2 ml-auto text-white/50 hover:text-white"
+				className="py-2 ml-auto text-white/50 hover:text-white"
 				to={'auth'}
 			>
 				Login / Signin
