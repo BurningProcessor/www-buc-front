@@ -12,7 +12,7 @@ interface ITransactionTable {
 }
 
 const TransactionTable: FC<ITransactionTable> = ({ limit }) => {
-	const { transactions } = useLoaderData() as IResponseTransactionLoader
+	const { totalTransactions } = useLoaderData() as IResponseTransactionLoader
 
 	const [data, setData] = useState<ITransaction[]>([])
 	const [currentPage, setCurrentPage] = useState<number>(1)
@@ -23,7 +23,8 @@ const TransactionTable: FC<ITransactionTable> = ({ limit }) => {
 			`/transactions/pagination?page=${page}&limit=${limit}`
 		)
 		setData(response.data)
-		setTotalPages(Math.ceil(transactions.length / limit))
+		//setTotalPages(Math.ceil(transactions.length / limit))
+		setTotalPages(Math.ceil(totalTransactions / limit))
 	}
 
 	const handlePageChange = (selectedItem: { selected: number }) => {
@@ -32,7 +33,7 @@ const TransactionTable: FC<ITransactionTable> = ({ limit }) => {
 
 	useEffect(() => {
 		fetchTransactions(currentPage)
-	}, [currentPage, transactions])
+	}, [currentPage, totalTransactions])
 
 	//console.log(transactions)
 

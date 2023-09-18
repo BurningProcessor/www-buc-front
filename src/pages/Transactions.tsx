@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import TransactionForm from '../components/TransactionForm'
 import { instance } from '../api/axios.api'
-import { ICategory, IResponseTransactionLoader, ITransaction } from '../types/types'
+import { ICategory, IResponseTransactionLoader } from '../types/types'
 import { toast } from 'react-toastify'
 import TransactionTable from '../components/TransactionTable'
 import { useLoaderData } from 'react-router-dom'
@@ -10,15 +10,15 @@ import Chart from '../components/Chart'
 
 export const transactionsLoader = async () => {
 	const categories = await instance.get<ICategory[]>('/categories')
-	const transactions = await instance.get<ITransaction[]>('/transactions')
 	const totalIncome = await await instance.get<number>('/transactions/income/find')
 	const totalExpense = await await instance.get<number>('/transactions/expense/find')
+	const totalTransactions = await instance.get<number>('/transactions/size')
 
 	const data = {
 		categories: categories.data,
-		transactions: transactions.data,
 		totalIncome: totalIncome.data,
-		totalExpense: totalExpense.data
+		totalExpense: totalExpense.data,
+		totalTransactions: totalTransactions.data
 	}
 	return data
 }
