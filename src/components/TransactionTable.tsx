@@ -23,7 +23,6 @@ const TransactionTable: FC<ITransactionTable> = ({ limit }) => {
 			`/transactions/pagination?page=${page}&limit=${limit}`
 		)
 		setData(response.data)
-		//setTotalPages(Math.ceil(transactions.length / limit))
 		setTotalPages(Math.ceil(totalTransactions / limit))
 	}
 
@@ -34,8 +33,6 @@ const TransactionTable: FC<ITransactionTable> = ({ limit }) => {
 	useEffect(() => {
 		fetchTransactions(currentPage)
 	}, [currentPage, totalTransactions])
-
-	//console.log(transactions)
 
 	return <>
 		<ReactPaginate

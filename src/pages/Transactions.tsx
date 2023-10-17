@@ -5,8 +5,8 @@ import { ICategory, IResponseTransactionLoader } from '../types/types'
 import { toast } from 'react-toastify'
 import TransactionTable from '../components/TransactionTable'
 import { useLoaderData } from 'react-router-dom'
-import { formatToUSD } from '../helpers/currency.helper'
 import Chart from '../components/Chart'
+import TotalValues from '../components/TotalValues'
 
 export const transactionsLoader = async () => {
 	const categories = await instance.get<ICategory[]>('/categories')
@@ -52,41 +52,28 @@ const Transactions: FC = () => {
 	const { totalIncome, totalExpense } = useLoaderData() as IResponseTransactionLoader
 
 	return <>
-		<div className='mt-4 grid grid-cols-3 items-start gap-4'>
+		{/* <div className='mt-4 grid grid-cols-3 gap-4'> */}
+		<div className='mt-10 flex flex-wrap gap-4'>
 			{/* Add transactions form */}
-			<div className='col-span-2 grid'><TransactionForm /></div>
+			<div className='flex-grow-[2] min-w-[600]'><TransactionForm /></div>
 
 			{/* Statistic blocks */}
 			<div className="rounded-md bg-slate-800 p-3">
-				<div className="grid grid-cols-2 gap-3">
-					<div>
-						<p className='uppercase text-md text-center font-bold'
-						>
-							Total Income:
-						</p>
-						<p className='mt-2 rounded-sm bg-green-600 p-1 text-center'
-						>
-							{formatToUSD.format(totalIncome)}
-						</p>
-					</div>
-					<div>
-						<p className='uppercase text-center font-bold'
-						>
-							Total Expense:
-						</p>
-						<p className='mt-2 rounded-sm bg-red-500 p-1 text-center'
-						>
-							{formatToUSD.format(totalExpense)}
-						</p>
-
-					</div>
+				<TotalValues totalIncome={totalIncome} totalExpense={totalExpense} />
+				<div className='flex justify-center'>
+					{/* <div className='object-contain h-[50%] w-[50%]'>
+						<img src="\src\assets\404.jpg" alt="photo" />
+					</div> */}
 					<Chart totalIncome={totalIncome} totalExpense={totalExpense} />
 				</div>
 			</div>
 		</div>
 
 		{/* transactions table */}
-		<h1 className='my-5'><TransactionTable limit={5} /></h1>
+		<div className='my-5 min-w-[400pt]'><TransactionTable limit={5} /></div>
+		{/* <div className='min-w-[600]'>
+			<img src="\src\assets\404.jpg" alt="" />
+		</div> */}
 	</>
 }
 

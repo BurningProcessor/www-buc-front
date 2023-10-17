@@ -38,8 +38,9 @@ const Auth: FC = () => {
 				navigate('/')
 			}
 		} catch (err: any) {
+			console.log(err)
 			const error = err.response?.data.message
-			toast.error(error.ToString())
+			toast.error(error)
 		}
 	}
 
@@ -65,7 +66,7 @@ const Auth: FC = () => {
 				onChange={(p) => setPassword(p.target.value)}
 			/>
 
-			<button className='btn btn-green mx-auto'>Sumbit</button>
+			<button className='btn btn-green mx-auto'>Submit</button>
 		</form>
 
 		<div className=' flex justify-center mt-6 '>

@@ -1,0 +1,47 @@
+.menu-btn {
+	display: block;
+	position: relative;
+	width: 2rem;
+	height: 2rem;
+}
+#menu_checkbox {
+	position: absolute;
+	height: 2rem;
+	width: 2rem;
+	cursor: pointer;
+	opacity: 0;
+}
+.menu-btn span,
+.menu-btn span::after,
+.menu-btn span::before {
+	transition: 500ms;
+	position: absolute;
+	width: 20px;
+	height: 4px;
+	background-color: white;
+	content: '';
+}
+.menu-btn span {
+	top: 20%;
+	left: 50%;
+	margin-left: -10px;
+}
+.menu-btn span::after {
+	transform: translateY(-10px);
+}
+.menu-btn span::before {
+	transform: translateY(10px);
+}
+.menu-btn input[type='checkbox']:checked + span {
+	transition: 500ms;
+	height: 0;
+}
+
+.menu-btn input[type='checkbox']:checked + span::after {
+	transition: 500ms;
+	transform: rotate(-45deg);
+}
+.menu-btn input[type='checkbox']:checked + span::before {
+	transition: 500ms;
+	transform: rotate(45deg);
+}
