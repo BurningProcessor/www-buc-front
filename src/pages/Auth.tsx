@@ -1,11 +1,12 @@
 import { FC, useState } from 'react'
 import { AuthService } from '../services/auth.service'
 import { toast } from 'react-toastify'
-import { setTokenToLocalStorage } from '../helpers/cookie.helper'
+import { getHeaderTokenFromCookies, setTokenToCookies } from '../helpers/cookies.helper'
 import { useAppDispatch } from '../hooks'
 import { login } from '../store/user/userSlice'
 import { useNavigate } from 'react-router-dom'
 import { IResponceLoginData } from '../types/types'
+import { instance } from '../api/axios.api'
 
 const Auth: FC = () => {
 	const [email, setEmail] = useState<string>('')
@@ -45,7 +46,8 @@ const Auth: FC = () => {
 	}
 
 	async function saveLogin(loginData: IResponceLoginData) {
-		setTokenToLocalStorage(loginData.token)
+		setTokenToCookies(loginData.token)
+		instance.defaults.headers.authorization = getHeaderTokenFromCookies()
 
 		dispatch(login(loginData.user))
 		toast.success('You logged id.')

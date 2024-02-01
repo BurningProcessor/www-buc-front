@@ -6,7 +6,7 @@ function getCookie(name: string) { return document.cookie
 
 const tokenName = 'token'
 
-export function getTokenFromLocalStorage(): string | undefined {
+export function getTokenFromCookies(): string | undefined {
 	// const data = localStorage.getItem(tokenName)
 	// const token: string = data ? JSON.parse(data) : ''
 
@@ -15,13 +15,17 @@ export function getTokenFromLocalStorage(): string | undefined {
 	return token
 }
 
-export function setTokenToLocalStorage(token: string) {
+export function getHeaderTokenFromCookies(): string {
+	return 'Bearer ' + getTokenFromCookies()
+}
+
+export function setTokenToCookies(token: string) {
 	// localStorage.setItem(tokenName, JSON.stringify(token))
 
 	document.cookie = `${tokenName}=${token};max-age=${60 * 60 * 24 * 30}`
 }
 
-export function removeTokenFromLocalStorage() {
+export function removeTokenFromCookies() {
 	// localStorage.removeItem(tokenName)
 
 	document.cookie = `token=${tokenName};max-age=0`
