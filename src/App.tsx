@@ -1,7 +1,7 @@
 import { RouterProvider } from 'react-router-dom'
 import { router } from './router/router'
 import { useAppDispatch } from './hooks'
-import { getToketFromLocalStorage } from './helpers/localstorage.helper'
+import { getTokenFromLocalStorage } from './helpers/cookie.helper'
 import { AuthService } from './services/auth.service'
 import { login, logout } from './store/user/userSlice'
 import { useEffect } from 'react'
@@ -10,7 +10,7 @@ function App() {
 	const dispatch = useAppDispatch()
 
 	const checkAuth = async () => {
-		const token = getToketFromLocalStorage()
+		const token = getTokenFromLocalStorage()
 		try {
 			if (token) {
 				const data = await AuthService.getProfile()

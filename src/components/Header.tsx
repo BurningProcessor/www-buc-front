@@ -4,7 +4,7 @@ import { FaBtc, FaSignOutAlt } from 'react-icons/fa'
 import { useAuth } from '../hooks/useAuth'
 import { useAppDispatch } from '../hooks'
 import { logout } from '../store/user/userSlice'
-import { removeTokenFromLocalStorage } from '../helpers/localstorage.helper'
+import { removeTokenFromLocalStorage } from '../helpers/cookie.helper'
 import { toast } from 'react-toastify'
 
 const Header: FC = () => {
@@ -15,7 +15,7 @@ const Header: FC = () => {
 
 	function logoutHandler() {
 		dispatch(logout()),
-		removeTokenFromLocalStorage('token'),
+		removeTokenFromLocalStorage(),
 		toast.success('You logged out.'),
 		navigate('/')
 	}

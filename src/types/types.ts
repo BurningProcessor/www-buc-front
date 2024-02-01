@@ -1,7 +1,7 @@
 export interface IUser {
 	id: number
 	email: string
-	token: string
+	// token: string
 }
 
 export interface IUserData {
@@ -9,15 +9,14 @@ export interface IUserData {
 	password: string
 }
 
-export interface IResponceUser extends IUserData {
+export interface IResponceUser {
 	id: number
-	createdAt: string
-	updatedAt: string
+	email: string
 }
 
-export interface IResponceUserData {
-	token: string
+export interface IResponceLoginData {
 	user: IResponceUser
+	token: string
 }
 
 export interface ICategory {

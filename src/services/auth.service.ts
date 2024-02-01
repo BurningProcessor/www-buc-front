@@ -6,12 +6,12 @@ export const AuthService = {
 		const { data } = await instance.post<IResponceUserData>('user', userData)
 		return data
 	},
-	async login(userData: IUserData): Promise<IUser | undefined> {
-		const { data } = await instance.post<IUser>('auth/login', userData)
+	async login(userData: IUserData): Promise<IResponceUserData | undefined> {
+		const { data } = await instance.post<IResponceUserData>('auth/login', userData)
 		return data
 	},
 	async getProfile(): Promise<IUser | undefined> {
 		const { data } = await instance.get<IUser>('auth/profile')
 		if (data) return data
-	}
+	},
 }

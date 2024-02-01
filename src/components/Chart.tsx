@@ -12,7 +12,7 @@ interface IData {
 }
 
 const Chart: FC<IChart> = ({ totalIncome, totalExpense }) => {
-	const COLORS = ['#BB0000', '#00AA00']
+	const COLORS = ['#00AA00', '#BB0000']
 	const data = new Array<IData>(
 		{ value: totalIncome, name: 'Income' },
 		{ value: totalExpense, name: 'Expense' }

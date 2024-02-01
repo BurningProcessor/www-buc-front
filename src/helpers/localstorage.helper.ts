@@ -1,14 +1,16 @@
-export function getToketFromLocalStorage(): string {
-	const data = localStorage.getItem('token')
+const tokenKey = 'token'
+
+export function getTokenFromLocalStorage(): string {
+	const data = localStorage.getItem(tokenKey)
 	const token: string = data ? JSON.parse(data) : ''
 
 	return token
 }
 
-export function setTokenToLocalStorage(key: string, token: string): void {
-	localStorage.setItem(key, JSON.stringify(token))
+export function setTokenToLocalStorage(token: string) {
+	localStorage.setItem(tokenKey, JSON.stringify(token))
 }
 
-export function removeTokenFromLocalStorage(key: string): void {
-	localStorage.removeItem(key)
+export function removeTokenFromLocalStorage() {
+	localStorage.removeItem(tokenKey)
 }

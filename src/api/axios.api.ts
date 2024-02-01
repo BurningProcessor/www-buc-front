@@ -1,9 +1,12 @@
 import axios from "axios";
-import { getToketFromLocalStorage } from "../helpers/localstorage.helper";
+import { getTokenFromLocalStorage } from "../helpers/cookie.helper";
+
+const apiIP = import.meta.env.VITE_API_HOST
+const apiPort = import.meta.env.VITE_API_PORT
 
 export const instance = axios.create({
-	baseURL: 'http://192.168.0.2:3000/api',
+	baseURL: `${apiIP}:${apiPort}/api`,
 	headers: {
-		Authorization: 'Bearer ' + getToketFromLocalStorage()
-	}
+		Authorization: 'Bearer ' + getTokenFromLocalStorage()
+	},
 })
