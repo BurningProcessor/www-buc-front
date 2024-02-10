@@ -53,27 +53,21 @@ const Transactions: FC = () => {
 
 	return <>
 		{/* <div className='mt-4 grid grid-cols-3 gap-4'> */}
-		<div className='mt-10 flex flex-wrap gap-4'>
+		<div className='mx-1 mt-10 flex flex-wrap justify-evenly gap-4 sm:mx-auto'>
 			{/* Add transactions form */}
-			<div className='flex-grow-[2] min-w-[600]'><TransactionForm /></div>
+			<div className='flex-grow-[2] '><TransactionForm /></div>
 
 			{/* Statistic blocks */}
-			<div className="rounded-md bg-slate-800 p-3">
+			<div className="w-full rounded-md bg-slate-800 p-3 sm:w-auto">
 				<TotalValues totalIncome={totalIncome} totalExpense={totalExpense} />
 				<div className='flex justify-center'>
-					{/* <div className='object-contain h-[50%] w-[50%]'>
-						<img src="\src\assets\404.jpg" alt="photo" />
-					</div> */}
 					<Chart totalIncome={totalIncome} totalExpense={totalExpense} />
 				</div>
 			</div>
 		</div>
 
 		{/* transactions table */}
-		<div className='my-5 min-w-[400pt]'><TransactionTable limit={5} /></div>
-		{/* <div className='min-w-[600]'>
-			<img src="\src\assets\404.jpg" alt="" />
-		</div> */}
+		<div className='my-5'><TransactionTable limit={5} /></div>
 	</>
 }
 

@@ -46,7 +46,7 @@ const Categories: FC = () => {
 
 	const [VisibleModal, setVisibleModal] = useState<boolean>(false)
 	return <>
-		<div className='mt-10 p-4 rounded-md bg-slate-800'>
+		<div className='mx-1 mt-10 p-4 rounded-md bg-slate-800 sm:mx-auto'>
 			<h1>Your category list:</h1>
 			{/* Category List */}
 			<div className='flex mt-2 items-center gap-2 flex-wrap'>
