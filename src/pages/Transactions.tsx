@@ -53,7 +53,7 @@ const Transactions: FC = () => {
 
 	return <>
 		{/* <div className='mt-4 grid grid-cols-3 gap-4'> */}
-		<div className='mx-1 mt-10 flex flex-wrap justify-evenly gap-4 sm:mx-auto'>
+		<div className='mx-1 mt-10 flex flex-wrap justify-evenly gap-3 sm:mx-auto'>
 			{/* Add transactions form */}
 			<div className='flex-grow-[2] '><TransactionForm /></div>
 
@@ -67,7 +67,10 @@ const Transactions: FC = () => {
 		</div>
 
 		{/* transactions table */}
-		<div className='my-5'><TransactionTable limit={5} /></div>
+		<div className='mt-3'><TransactionTable limit={5} /></div>
+
+		{/* fix visual bug 'white shace in botton screen from mobile layout' */}
+		<div className='h-40 sm:hidden'></div>
 	</>
 }
 

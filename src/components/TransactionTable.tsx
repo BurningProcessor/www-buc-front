@@ -35,13 +35,13 @@ const TransactionTable: FC<ITransactionTable> = ({ limit }) => {
 	}, [currentPage, totalTransactions])
 
 	return (
-		<>
+		<div>
 			<ReactPaginate
-				className="sm:justify-en mt-4 flex items-center justify-center gap-3"
+				className="sm:justify-en mt-3 flex w-full items-center justify-center gap-3 sm:justify-end"
 				activeClassName="bg-blue-600 rounded-md"
-				pageLinkClassName="text-white text-xs py-1 px-2 rounded-sm"
-				previousClassName="text white py-1 px-2 bg-slate-800 rounded-sm text-xs"
-				nextClassName="text white py-1 px-2 bg-slate-800 rounded-sm text-xs"
+				pageLinkClassName="text-white text-xs py-1 px-2 rounded-md"
+				previousClassName="text white py-1 px-2 bg-slate-800 rounded-md text-xs"
+				nextClassName="text white py-1 px-2 bg-slate-800 rounded-md text-xs"
 				disabledClassName="text-white/50 cursor-not-allowed"
 				disabledLinkClassName="text-slate-600 cursor-not-allowed"
 				pageCount={totalPages}
@@ -50,42 +50,44 @@ const TransactionTable: FC<ITransactionTable> = ({ limit }) => {
 				onPageChange={handlePageChange}
 			/>
 
-			<div className="mx-1 mt-2 grid gap-4 sm:hidden">
+			<div className="mx-1 my-3 grid gap-4 sm:hidden">
 				{data?.map((transaction, idx) => (
 					<table key={idx} className=" w-full rounded-md bg-slate-800 px-4 py-3 ">
-						<tr>
-							<td className="p-2"># {idx + 1}</td>
-						</tr>
-						<tr>
-							<td className="p-2">Title</td>
-							<td className="p-2">:</td>
-							<td className="p-2">{transaction.title}</td>
-						</tr>
-						<tr>
-							<td className="p-2">Amount(s)</td>
-							<td className="p-2">:</td>
-							<td className={`p-2 ${transaction.type === 'income' ? 'text-green-500' : 'text-red-500'}`}>
-								{`
+						<tbody>
+							<tr>
+								<td className="p-2"># {idx + 1}</td>
+							</tr>
+							<tr>
+								<td className="p-2">Title</td>
+								<td className="p-2">:</td>
+								<td className="p-2">{transaction.title}</td>
+							</tr>
+							<tr>
+								<td className="p-2">Amount(s)</td>
+								<td className="p-2">:</td>
+								<td className={`p-2 ${transaction.type === 'income' ? 'text-green-500' : 'text-red-500'}`}>
+									{`
 									${transaction.type === 'income' ? '+' : '−'}
 									${formatToUSD.format(transaction.amount)}
 								`}
-							</td>
-						</tr>
-						<tr>
-							<td className="p-2">Category</td>
-							<td className="p-2">:</td>
-							<td className="p-2">{transaction.category?.title || '[ NONE OR DELETED ]'}</td>
-						</tr>
-						<tr>
-							<td className="p-2">Date</td>
-							<td className="p-2">:</td>
-							<td className="p-2">{formatDate(transaction.createAt)}</td>
-						</tr>
+								</td>
+							</tr>
+							<tr>
+								<td className="p-2">Category</td>
+								<td className="p-2">:</td>
+								<td className="p-2">{transaction.category?.title || '[ NONE OR DELETED ]'}</td>
+							</tr>
+							<tr>
+								<td className="p-2">Date</td>
+								<td className="p-2">:</td>
+								<td className="p-2">{formatDate(transaction.createAt)}</td>
+							</tr>
+						</tbody>
 					</table>
 				))}
 			</div>
 
-			<div className="mt-4 hidden rounded-md bg-slate-800 px-4 py-3 sm:block">
+			<div className="mt-3 hidden rounded-md bg-slate-800 px-4 py-3 sm:block">
 				<table className="w-full">
 					<thead>
 						<tr>
@@ -128,7 +130,7 @@ const TransactionTable: FC<ITransactionTable> = ({ limit }) => {
 					</tbody>
 				</table>
 			</div>
-		</>
+		</div>
 	)
 }
 

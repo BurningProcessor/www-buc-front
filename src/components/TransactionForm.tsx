@@ -63,24 +63,27 @@ const TransactionForm: FC = () => {
 			</button>
 
 			{/* Radio buttons */}
-			<div className="flex gap-4 items-center">
-				<label className='cursor-pointer flex items-center gap-2'>
+			<fieldset className="flex gap-4 items-center border rounded-md border-gray-700 w-min">
+				<legend className='mx-1 px-2'>Amount</legend>
+				<label className='ml-2 mt-1 mb-3 flex items-center gap-2'>
 					<input type="radio"
 						name='type'
 						value={'income'}
-						className='form-radio text-blue-600'
+						className='text-blue-600'
+						required
 					/>
 					<span>Income</span>
 				</label>
-				<label className='cursor-pointer flex items-center gap-2'>
+				<label className='mr-3 mt-1 mb-3 flex items-center gap-2'>
 					<input type="radio"
 						name='type'
 						value={'expense'}
-						className='form-radio text-blue-600'
+						className='text-blue-600'
+						required
 					/>
 					<span>Expense</span>
 				</label>
-			</div>
+			</fieldset>
 
 			{/* Submit button */}
 			<button className='btn btn-green max-w-fit mt-2'>Submit</button>
