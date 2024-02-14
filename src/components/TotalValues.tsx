@@ -7,24 +7,22 @@ interface ITotalValues {
 }
 
 const TotalValues: FC<ITotalValues> = ({ totalIncome, totalExpense }) => {
-	return <div className='grid grid-cols-2 gap-3'>
-		<div>
-			<p className='uppercase text-md text-center font-bold' >
-				Total Income:
-			</p>
-			<p className='mt-2 rounded-sm bg-green-600 p-1 text-center' >
-				{formatToUSD.format(totalIncome)}
-			</p>
-		</div >
-		<div>
-			<p className='uppercase text-center font-bold' >
-				Total Expense:
-			</p>
-			<p className='mt-2 rounded-sm bg-red-500 p-1 text-center' >
-				{formatToUSD.format(totalExpense)}
-			</p>
+	return (
+		<div className="grid grid-cols-2 gap-3">
+			<div>
+				<p className="text-md text-center font-bold uppercase">Total Income:</p>
+				<p className="mt-2 rounded-sm bg-green-600 p-1 text-center text-white dark:text-black">
+					{formatToUSD.format(totalIncome)}
+				</p>
+			</div>
+			<div>
+				<p className="text-center font-bold uppercase">Total Expense:</p>
+				<p className="mt-2 rounded-sm bg-red-500 p-1 text-center text-white dark:text-black">
+					{formatToUSD.format(totalExpense)}
+				</p>
+			</div>
 		</div>
-	</div>
+	)
 }
 
 export default TotalValues

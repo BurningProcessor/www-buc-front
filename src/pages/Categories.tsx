@@ -45,62 +45,60 @@ const Categories: FC = () => {
 	const [isEdit, setIsEdit] = useState<boolean>(false)
 
 	const [VisibleModal, setVisibleModal] = useState<boolean>(false)
-	return <>
-		<div className='mx-1 mt-10 p-4 rounded-md bg-slate-800 sm:mx-auto'>
-			<h1>Your category list:</h1>
-			{/* Category List */}
-			<div className='flex mt-2 items-center gap-2 flex-wrap'>
-				{categories.map((category, idx) => (
-					<div key={idx} className='group py-2 px-4 rounded-lg bg-blue-600 flex items-center relative gap-2'>
-						{category.title}
-						<div className='hidden group-hover:flex absolute px-3 left-0 top-0 bottom-0 right-0 rounded-lg bg-black/90 items-center justify-between'>
-							<button onClick={() => {
-								setCategoryId(category.id)
-								setVisibleModal(true)
-								setIsEdit(true)
-							}}>
-								<AiFillEdit />
-							</button>
+	return (
+		<>
+			<div className="card mx-1 mt-10 sm:mx-auto">
+				<h1>Your category list:</h1>
 
-							<Form
-								className='flex'
-								method='delete'
-								action='/categories'
-							>
-								<input
-									type='hidden'
-									name="id"
-									value={category.id}
-								/>
-								<button type='submit'>
-									<AiFillCloseCircle />
+				{/* Category List */}
+				<div className="mt-2 flex flex-wrap items-center gap-2">
+					{categories.map((category, idx) => (
+						<div
+							key={idx}
+							className="group relative flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-white"
+						>
+							{category.title}
+							<div className="absolute bottom-0 left-0 right-0 top-0 hidden items-center justify-between rounded-lg bg-black/75 px-3 text-white group-hover:flex">
+								<button
+									onClick={() => {
+										setCategoryId(category.id)
+										setVisibleModal(true)
+										setIsEdit(true)
+									}}
+								>
+									<AiFillEdit />
 								</button>
-							</Form>
+
+								<Form className="flex" method="delete" action="/categories">
+									<input type="hidden" name="id" value={category.id} />
+									<button type="submit" className="text-red-500">
+										<AiFillCloseCircle />
+									</button>
+								</Form>
+							</div>
 						</div>
-					</div>
-				))}
+					))}
+				</div>
+
+				{/* Add Category */}
+				<button
+					className="inactive-text mt-5 flex max-w-fit items-center gap-2 hover:text-current dark:text-white/50 dark:hover:text-white"
+					onClick={() => setVisibleModal(true)}
+				>
+					<FaPlus />
+					<span>Create a new Category</span>
+				</button>
 			</div>
 
-			{/* Add Category */}
-			<button
-				className='max-w-fit flex items-center gap-2 text-white/50 mt-5 hover:text-white'
-				onClick={() => setVisibleModal(true)}
-			>
-				<FaPlus />
-				<span>Create a new Category</span>
-			</button>
-		</div>
+			{/* Add Category Modal */}
+			{VisibleModal && <CategoryModal type="post" setVisibleModal={setVisibleModal} />}
 
-		{/* Add Category Modal */}
-		{VisibleModal && (
-			<CategoryModal type='post' setVisibleModal={setVisibleModal} />
-		)}
-
-		{/* Edit Category Modal */}
-		{VisibleModal && isEdit && (
-			<CategoryModal type='patch' id={categoryId} setVisibleModal={setVisibleModal} />
-		)}
-	</>
+			{/* Edit Category Modal */}
+			{VisibleModal && isEdit && (
+				<CategoryModal type="patch" id={categoryId} setVisibleModal={setVisibleModal} />
+			)}
+		</>
+	)
 }
 
 export default Categories

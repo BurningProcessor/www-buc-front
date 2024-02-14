@@ -19,9 +19,7 @@ const TransactionTable: FC<ITransactionTable> = ({ limit }) => {
 	const [totalPages, setTotalPages] = useState<number>(0)
 
 	const fetchTransactions = async (page: number) => {
-		const response = await instance.get(
-			`/transactions/pagination?page=${page}&limit=${limit}`
-		)
+		const response = await instance.get(`/transactions/pagination?page=${page}&limit=${limit}`)
 		setData(response.data)
 		setTotalPages(Math.ceil(totalTransactions / limit))
 	}
@@ -38,12 +36,12 @@ const TransactionTable: FC<ITransactionTable> = ({ limit }) => {
 		<div>
 			<ReactPaginate
 				className="sm:justify-en mt-3 flex w-full items-center justify-center gap-3 sm:justify-end"
-				activeClassName="bg-blue-600 rounded-md"
-				pageLinkClassName="text-white text-xs py-1 px-2 rounded-md"
-				previousClassName="text white py-1 px-2 bg-slate-800 rounded-md text-xs"
-				nextClassName="text white py-1 px-2 bg-slate-800 rounded-md text-xs"
-				disabledClassName="text-white/50 cursor-not-allowed"
-				disabledLinkClassName="text-slate-600 cursor-not-allowed"
+				activeClassName="bg-blue-600 rounded-md text-white"
+				pageLinkClassName="text-xs py-1 px-2 rounded-md dark:text-white"
+				previousClassName="py-1 px-2 bg-white rounded-md text-xs dark:text-white dark:bg-slate-800"
+				nextClassName="py-1 px-2 bg-white rounded-md text-xs dark:text-white dark:bg-slate-800"
+				disabledClassName="inactive-text cursor-not-allowed"
+				disabledLinkClassName="inactive-text cursor-not-allowed"
 				pageCount={totalPages}
 				pageRangeDisplayed={1}
 				marginPagesDisplayed={2}
@@ -52,7 +50,7 @@ const TransactionTable: FC<ITransactionTable> = ({ limit }) => {
 
 			<div className="mx-1 my-3 grid gap-4 sm:hidden">
 				{data?.map((transaction, idx) => (
-					<table key={idx} className=" w-full rounded-md bg-slate-800 px-4 py-3 ">
+					<table key={idx} className="card w-full px-4 py-3 ">
 						<tbody>
 							<tr>
 								<td className="p-2"># {idx + 1}</td>
@@ -65,7 +63,11 @@ const TransactionTable: FC<ITransactionTable> = ({ limit }) => {
 							<tr>
 								<td className="p-2">Amount(s)</td>
 								<td className="p-2">:</td>
-								<td className={`p-2 ${transaction.type === 'income' ? 'text-green-500' : 'text-red-500'}`}>
+								<td
+									className={`p-2 ${
+										transaction.type === 'income' ? 'text-green-500' : 'text-red-500'
+									}`}
+								>
 									{`
 									${transaction.type === 'income' ? '+' : '−'}
 									${formatToUSD.format(transaction.amount)}
@@ -87,7 +89,7 @@ const TransactionTable: FC<ITransactionTable> = ({ limit }) => {
 				))}
 			</div>
 
-			<div className="mt-3 hidden rounded-md bg-slate-800 px-4 py-3 sm:block">
+			<div className="card mt-3 hidden px-4 py-3 sm:block">
 				<table className="w-full">
 					<thead>
 						<tr>

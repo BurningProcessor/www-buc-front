@@ -54,51 +54,52 @@ const Auth: FC = () => {
 		navigate('/')
 	}
 
-	return <div className=' mt-40 flex flex-col justify-center items-center bg-slate-900 text-white '>
-		<h1 className=' text-center text-xl mb-10 '>
-			{isLogin ? 'Login' : 'Registration'}
-		</h1>
+	return (
+		<div className="card mt-40 flex flex-col items-center justify-center ">
+			<h1 className=" mb-10 text-center text-xl ">{isLogin ? 'Login' : 'Registration'}</h1>
 
-		<form name=' login / registration '
-			onSubmit={isLogin ? loginHandler : registrationHandler}
-			className=' flex w-1/3 flex-col mx-auto gap-5 '
-		>
-			<input
-				type='text'
-				className='input'
-				placeholder='Email'
-				onChange={(e) => setEmail(e.target.value)}
-			/>
-			<input
-				type='password'
-				className='input'
-				placeholder='Password'
-				onChange={(p) => setPassword(p.target.value)}
-			/>
+			<form
+				name=" login / registration "
+				onSubmit={isLogin ? loginHandler : registrationHandler}
+				className=" mx-auto flex w-1/3 flex-col gap-5 "
+			>
+				<input
+					type="text"
+					className="input"
+					placeholder="Email"
+					onChange={(e) => setEmail(e.target.value)}
+				/>
+				<input
+					type="password"
+					className="input"
+					placeholder="Password"
+					onChange={(p) => setPassword(p.target.value)}
+				/>
 
-			<button className='btn btn-green mx-auto'>Submit</button>
-		</form>
+				<button className="btn btn-green mx-auto">Submit</button>
+			</form>
 
-		<div className=' flex justify-center mt-6 '>
-			{
-				isLogin ? (
-					<button name='choiseRegistration'
+			<div className=" mt-6 flex justify-center ">
+				{isLogin ? (
+					<button
+						name="choiseRegistration"
 						onClick={() => setIsLogin(!isLogin)}
-						className=' text-slate-300 hover:text-white '
+						className="inactive-text hover:text-current dark:text-slate-300 dark:hover:text-white"
 					>
 						You don't have account?
 					</button>
 				) : (
-					<button name='choiseLogin'
+					<button
+						name="choiseLogin"
 						onClick={() => setIsLogin(!isLogin)}
-						className=' text-slate-300 hover:text-white '
+						className="inactive-text hover:text-current dark:text-slate-300 dark:hover:text-white"
 					>
 						Already have an account?
 					</button>
-				)
-			}
+				)}
+			</div>
 		</div>
-	</div>
+	)
 }
 
 export default Auth

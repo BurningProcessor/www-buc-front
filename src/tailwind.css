@@ -6,34 +6,72 @@
 
 @layer base {
 	body {
-		@apply text-sm;
+		@apply bg-slate-200 text-sm dark:bg-slate-900;
 	}
+
 	td {
-		@apply capitalize text-white/70;
-	}
-	thread td {
-		@apply text-white;
+		@apply capitalize;
 	}
 }
 @layer components {
+	h1 {
+		@apply text-lg;
+	}
+
 	.btn {
 		@apply flex items-center gap-2 rounded-md px-4 py-2 text-white disabled:cursor-not-allowed disabled:bg-gray-400 disabled:hover:bg-gray-400;
 	}
-	/* .input { @apply placeholder:text-white rounded-md border border-slate-800 bg-slate-700 bg-transparent p-2 outline-none focus:border-slate-300 placeholder:text-sm; } */
+
 	.input {
 		@apply rounded-md border border-slate-800 bg-transparent p-2 outline-none placeholder:text-white focus:border-slate-300;
 	}
+
 	.container {
 		@apply min-w-[320px] max-w-[1000px];
 	}
+
 	.menu {
-		@apply absolute top-20 mx-0 rounded-lg bg-slate-700 shadow-lg md:static md:z-auto md:items-center md:bg-transparent;
+		@apply absolute top-20 mx-0 rounded-lg bg-slate-700 shadow-lg md:static md:z-auto md:items-center md:bg-transparent md:shadow-transparent;
+	}
+
+	.inactive-text {
+		@apply text-gray-400;
+	}
+
+	.card {
+		@apply rounded-md bg-white p-4 dark:bg-slate-800;
+	}
+
+	input[type='text'],
+	input[type='password'],
+	input[type='email'],
+	input[type='number'],
+	input[type='url'],
+	input[type='date'],
+	input[type='datetime-local'],
+	input[type='month'],
+	input[type='week'],
+	input[type='time'],
+	input[type='search'],
+	input[type='tel'],
+	input[type='checkbox'],
+	input[type='radio'],
+	select,
+	select[multiple],
+	textarea,
+	fieldset {
+		@apply rounded-md border border-slate-400 bg-transparent p-2 outline-none placeholder:text-gray-400 focus:border-slate-300 dark:border-slate-700;
+	}
+
+	input[type='radio'] {
+		@apply rounded-full;
 	}
 }
 @layer utilities {
 	.btn-red {
 		@apply bg-rose-900 hover:bg-rose-800;
 	}
+
 	.btn-green {
 		@apply bg-green-600 hover:bg-green-800;
 	}
