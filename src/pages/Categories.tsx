@@ -44,7 +44,7 @@ const Categories: FC = () => {
 	const [categoryId, setCategoryId] = useState<number>(0)
 	const [isEdit, setIsEdit] = useState<boolean>(false)
 
-	const [VisibleModal, setVisibleModal] = useState<boolean>(false)
+	const [visibleModal, setVisibleModal] = useState<boolean>(false)
 	return (
 		<>
 			<div className="card mx-1 mt-10 sm:mx-auto">
@@ -91,10 +91,10 @@ const Categories: FC = () => {
 			</div>
 
 			{/* Add Category Modal */}
-			{VisibleModal && <CategoryModal type="post" setVisibleModal={setVisibleModal} />}
+			{visibleModal && <CategoryModal type="post" setVisibleModal={setVisibleModal} />}
 
 			{/* Edit Category Modal */}
-			{VisibleModal && isEdit && (
+			{visibleModal && isEdit && (
 				<CategoryModal type="patch" id={categoryId} setVisibleModal={setVisibleModal} />
 			)}
 		</>
