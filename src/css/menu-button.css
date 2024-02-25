@@ -11,6 +11,20 @@
 	cursor: pointer;
 	opacity: 0;
 }
+@media (prefers-color-scheme: dark) {
+	.menu-btn span,
+	.menu-btn span::after,
+	.menu-btn span::before {
+		background-color: white;
+	}
+}
+@media (prefers-color-scheme: light) {
+	.menu-btn span,
+	.menu-btn span::after,
+	.menu-btn span::before {
+		background-color: rgb(55 65 81);
+	}
+}
 .menu-btn span,
 .menu-btn span::after,
 .menu-btn span::before {
@@ -18,7 +32,8 @@
 	position: absolute;
 	width: 20px;
 	height: 4px;
-	background-color: white;
+	border-radius: 0.125rem;
+	/* background-color: black; */
 	content: '';
 }
 .menu-btn span {

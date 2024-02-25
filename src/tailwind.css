@@ -31,7 +31,7 @@
 	}
 
 	.menu {
-		@apply absolute top-20 mx-0 rounded-lg bg-slate-700 shadow-lg md:static md:z-auto md:items-center md:bg-transparent md:shadow-transparent;
+		@apply absolute top-[3rem] left-2 mx-0 rounded-lg bg-white dark:bg-slate-700 shadow-lg md:static md:z-auto md:items-center md:bg-transparent md:shadow-transparent;
 	}
 
 	.inactive-text {
@@ -66,10 +66,14 @@
 	input[type='radio'] {
 		@apply rounded-full;
 	}
+
+	form .error_msg {
+		@apply text-sm text-red-500
+	}
 }
 @layer utilities {
 	.btn-red {
-		@apply bg-rose-900 hover:bg-rose-800;
+		@apply bg-rose-500 hover:bg-rose-600 dark:bg-rose-900 dark:hover:bg-rose-800;
 	}
 
 	.btn-green {

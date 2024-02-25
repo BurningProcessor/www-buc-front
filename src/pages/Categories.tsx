@@ -55,11 +55,12 @@ const Categories: FC = () => {
 					{categories.map((category, idx) => (
 						<div
 							key={idx}
-							className="group relative flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-white"
+							className="group relative flex items-center gap-2 rounded-lg bg-blue-500 dark:bg-blue-600 px-4 py-2 text-white"
 						>
 							{category.title}
-							<div className="absolute bottom-0 left-0 right-0 top-0 hidden items-center justify-between rounded-lg bg-black/75 px-3 text-white group-hover:flex">
+							<div className="group/deck absolute bottom-0 left-0 right-0 top-0 hidden items-center justify-between rounded-lg bg-black/75 px-3 text-white hover:bg-slate-600/50 hover:delay-1000 group-hover:flex">
 								<button
+									className="invisible group-hover/deck:visible group-hover/deck:delay-100"
 									onClick={() => {
 										setCategoryId(category.id)
 										setVisibleModal(true)
@@ -69,7 +70,11 @@ const Categories: FC = () => {
 									<AiFillEdit />
 								</button>
 
-								<Form className="flex" method="delete" action="/categories">
+								<Form
+									className="invisible flex group-hover/deck:visible group-hover/deck:delay-100"
+									method="delete"
+									action="/categories"
+								>
 									<input type="hidden" name="id" value={category.id} />
 									<button type="submit" className="text-red-500">
 										<AiFillCloseCircle />

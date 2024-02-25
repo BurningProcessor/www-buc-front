@@ -29,17 +29,17 @@ const Header: FC = () => {
 			{isAuth && (
 				<div className="menu-btn mr-2 space-y-2 md:hidden">
 					<input
-						className="b-menu-c z-10"
+						className="z-10"
 						id="menu_checkbox"
 						type="checkbox"
 						onChange={() => (!openMenu ? setOpenMenu(true) : setOpenMenu(false))}
 					/>
-					<span></span>
+					<span />
 				</div>
 			)}
 
 			{/* Logo */}
-			<Link className="flex-none" to="/">
+			<Link className="flex-none text-gray-700 dark:text-white" to="/">
 				<FaBtc size={20} />
 			</Link>
 			<div className="grow"></div>
