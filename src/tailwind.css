@@ -31,7 +31,7 @@
 	}
 
 	.menu {
-		@apply absolute top-[3rem] left-2 mx-0 rounded-lg bg-white dark:bg-slate-700 shadow-lg md:static md:z-auto md:items-center md:bg-transparent md:shadow-transparent;
+		@apply absolute top-[3rem] left-2 mx-0 rounded-lg bg-white dark:bg-slate-700 shadow-lg md:static md:z-auto md:items-center md:bg-transparent md:shadow-transparent md:dark:bg-transparent;
 	}
 
 	.inactive-text {
